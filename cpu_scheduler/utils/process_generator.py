@@ -22,11 +22,24 @@ def manual_create_processes() -> List[Process]:
             # Si el ID está vacío, se termina la entrada
             break
         # Solicita atributos básicos del proceso
-        arrival = int(input("Tiempo de llegada (entero): ").strip())
-        burst = int(input("Tiempo de ráfaga (entero): ").strip())
-        # La prioridad es opcional, por defecto se asigna 0
-        priority = int(input("Prioridad (entero, menor = mayor prioridad, default 0): ").strip() or "0")
-        
+        while True:
+            try:
+                arrival = int(input("Tiempo de llegada (entero): ").strip())
+                break
+            except ValueError:
+                print("Entrada inválida para tiempo de llegada. Intenta de nuevo.")
+        while True:
+            try:
+                burst = int(input("Tiempo de ráfaga (entero): ").strip())
+                break
+            except ValueError:
+                print("Entrada inválida para tiempo de ráfaga. Intenta de nuevo.")
+        while True:
+            try:
+                priority = int(input("Prioridad (entero, menor = mayor prioridad, default 0): ").strip() or "0")
+                break
+            except ValueError:
+                print("Entrada inválida para prioridad. Intenta de nuevo.")
         # Se crea un objeto Process y se agrega a la lista
         processes.append(Process(id=pid, arrival_time=arrival, burst_time=burst, priority=priority))
         print("Proceso agregado.\n")

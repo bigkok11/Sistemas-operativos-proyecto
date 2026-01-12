@@ -30,7 +30,7 @@ def print_process_metrics(rows: List[Dict[str, float]]):
     print(" | ".join(header))
     for r in rows:
         # Se imprimen las métricas con formato numérico (dos decimales en métricas de tiempo)
-        print(f"{r['id']} | {r['arrival']} | {r['burst']} | {r['priority']} | {r['start']} | {r['completion']} | {r['turnaround']:.2f} | {r['waiting']:.2f} | {r['response']:.2f}")
+        print(f"{r['id']} | {r['arrival']}       | {r['burst']}      | {r['priority']}         | {r['start']}      | {r['completion']}   | {r['turnaround']:.2f}       | {r['waiting']:.2f}   | {r['response']:.2f}")
 
 
 def print_system_metrics(metrics: Dict[str, float]):
