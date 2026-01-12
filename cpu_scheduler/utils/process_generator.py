@@ -25,18 +25,27 @@ def manual_create_processes() -> List[Process]:
         while True:
             try:
                 arrival = int(input("Tiempo de llegada (entero): ").strip())
+                if (arrival < 0):
+                    print("El tiempo de llegada no puede ser negativo. Intenta de nuevo.")
+                    continue
                 break
             except ValueError:
                 print("Entrada inválida para tiempo de llegada. Intenta de nuevo.")
         while True:
             try:
                 burst = int(input("Tiempo de ráfaga (entero): ").strip())
+                if (burst <= 0):
+                    print("El tiempo de ráfaga debe ser un entero positivo. Intenta de nuevo.")
+                    continue
                 break
             except ValueError:
                 print("Entrada inválida para tiempo de ráfaga. Intenta de nuevo.")
         while True:
             try:
                 priority = int(input("Prioridad (entero, menor = mayor prioridad, default 0): ").strip() or "0")
+                if (priority < 0):
+                    print("La prioridad debe ser un entero no negativo. Intenta de nuevo.")
+                    continue
                 break
             except ValueError:
                 print("Entrada inválida para prioridad. Intenta de nuevo.")
