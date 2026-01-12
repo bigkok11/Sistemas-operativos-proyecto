@@ -2,14 +2,14 @@ import sys
 import os
 from typing import List
 from models.process import Process
-from algorithms.fcfs import FCFS
-from algorithms.sjf import SJFNonPreemptive
-from algorithms.round_robin import RoundRobin
-from algorithms.priority import PriorityScheduler
+from core.algorithms.fcfs import FCFS
+from core.algorithms.sjf import SJFNonPreemptive
+from core.algorithms.round_robin import RoundRobin
+from core.algorithms.priority import PriorityScheduler
 from utils.file_handler import load_named_set
 from utils.process_generator import manual_create_processes
 from ui.interface import run_simulation
-from algorithms.srtf import SRTF
+from core.algorithms.srtf import SRTF
 
 # Ruta absoluta al directorio raíz del proyecto
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
