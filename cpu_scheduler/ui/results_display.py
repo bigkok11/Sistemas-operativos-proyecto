@@ -1,3 +1,4 @@
+from colorama import *
 from typing import Dict, List
 from core.timeline import Timeline
 
@@ -7,7 +8,7 @@ def print_gantt(timeline: Timeline):
     - Recibe un objeto `Timeline` que contiene la secuencia de ejecución de procesos.
     - Utiliza el método `to_text()` para representar gráficamente la planificación.
     """
-    print("\nDiagrama de Gantt (textual):")
+    print(Fore.GREEN + "\nDiagrama de Gantt (textual):" + Style.RESET_ALL)
     print(timeline.to_text())
 
 
@@ -25,7 +26,7 @@ def print_process_metrics(rows: List[Dict[str, float]]):
         • Espera: tiempo en cola antes de ejecución
         • Respuesta: tiempo hasta la primera ejecución
     """
-    print("\nMétricas por proceso:")
+    print(Fore.CYAN + "\nMétricas por proceso:" + Style.RESET_ALL)
     header = ["ID", "Llegada", "Ráfaga", "Prioridad", "Inicio", "Fin", "Turnaround", "Espera", "Respuesta"]
     print(" | ".join(header))
     for r in rows:
@@ -42,7 +43,7 @@ def print_system_metrics(metrics: Dict[str, float]):
         • avg_response: tiempo promedio de respuesta
         • cpu_utilization: porcentaje de utilización de CPU
     """
-    print("\nMétricas del sistema:")
+    print(Fore.CYAN + "\nMétricas del sistema:" + Style.RESET_ALL)
     print(f"- Promedio Turnaround: {metrics['avg_turnaround']:.2f}")
     print(f"- Promedio Espera:     {metrics['avg_waiting']:.2f}")
     print(f"- Promedio Respuesta:  {metrics['avg_response']:.2f}")
@@ -56,7 +57,7 @@ def print_comparison_table(results: Dict[str, Dict[str, float]]):
       y el valor es otro diccionario con sus métricas promedio.
     - Muestra los resultados en formato tabular para facilitar la comparación.
     """
-    print("\nComparación entre algoritmos (promedios):")
+    print(Fore.GREEN+ "\nComparación entre algoritmos (promedios):" + Style.RESET_ALL)
     header = ["Algoritmo", "Avg Turnaround", "Avg Espera", "Avg Respuesta", "CPU Util (%)"]
     print(" | ".join(header))
     for algo, m in results.items():

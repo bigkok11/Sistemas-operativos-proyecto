@@ -1,3 +1,4 @@
+from colorama import *
 from typing import List, Dict
 from models.process import Process
 from core.scheduler import IScheduler, deep_reset, pick_best_algorithm
@@ -22,7 +23,7 @@ def run_simulation(processes: List[Process], schedulers: List[IScheduler]):
 
     # Itera sobre cada algoritmo seleccionado
     for s in schedulers:
-        print(f"\n=== Ejecutando {s.name} ===")
+        print(Fore.YELLOW + f"\n=== Ejecutando {s.name} ===" + Style.RESET_ALL)
         # Se reinicia el estado de los procesos antes de ejecutar cada algoritmo
         timeline, finalized = s.run(deep_reset(processes))
 
@@ -45,4 +46,4 @@ def run_simulation(processes: List[Process], schedulers: List[IScheduler]):
 
     # Selecciona automáticamente el mejor algoritmo según menor tiempo de espera promedio
     best = pick_best_algorithm(comparison)
-    print(f"\nConclusión automática: mejor algoritmo para este caso (menor espera promedio) => {best}")
+    print(Fore.LIGHTMAGENTA_EX + f"\nConclusión automática: mejor algoritmo para este caso (menor espera promedio) => {best}" + Style.RESET_ALL)
